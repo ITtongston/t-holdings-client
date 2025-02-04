@@ -1,6 +1,7 @@
 import Button from "@/shared/buttons/button";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLocation, faMagnet } from "@fortawesome/free-solid-svg-icons";
+import ApplicationForm from "@/shared/(Forms)/ApplicationForm";
 
 // components/CareerCard.js
 export default function CareerCard({
@@ -38,14 +39,12 @@ export default function CareerCard({
         <Button
           text={`Apply Now`}
           onClick={onApply}
+          modalClass={`justify-start items-start`}
           className=" bg-background-light text-sm border border-background-footer_black  w-[fixed] hover:border-background-danger  text-black px-4  rounded  "
           modalContent={
-            <span>
+            <span className="">
               {/* render the form component for applications here  */}
-              <iframe
-                src="https://docs.google.com/forms/d/e/1FAIpQLSfaj2fGMfl_5KivOFDE97UfSOLc5hiQP_O67CAdW90q5Z17yA/viewform"
-                className="w-[500px] h-screen"
-              />
+              <ApplicationForm />
             </span>
           }
         />

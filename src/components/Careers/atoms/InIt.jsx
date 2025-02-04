@@ -58,7 +58,7 @@ export default function InIt() {
         "We believe the best form of learning is immersive! So we encourage staff to rotate across departments and group of companies. Tongston has a robust secondment policy which means you can hold multiple roles in Tongston across its group of companies! We have had staff hold roles for instance Tongston Holdings in the Business Development, Stakeholder Management and Strategy and Tongston Institute in the Curriculum Development, Resource Development & Training Faculty; or an administration team member also in the research and economics team.",
     },
     {
-      title: "TongstonWe have a robust Entrepreneurial Mentoring Scheme",
+      title: "We have a robust Entrepreneurial Mentoring Scheme",
       content:
         "Staff can apply for an in-house Tongston entrepreneurial mentoring scheme. All new staff and interns are automatically assigned a buddy to support onboarding. Staff can also choose to apply to the Tongston Entrepreneurial mentoring program as mentees or mentors.",
     },

@@ -29,7 +29,7 @@ export default function EventsCard({
               alt="Event Image"
               width={500}
               height={500}
-              className="w-full h-[250px] object-fill    md:h-[300px]  md:object-cover"
+              className="w-full h-[250px] object-fill    md:h-[300px]  md:object-contain"
             />
           </section>
           <section className="contents-container w-full flex flex-col gap-y-8 justify-start items-start ">
@@ -69,9 +69,10 @@ export default function EventsCard({
             </div>
             <Button
               text={card.router_btn}
+              modalClass={`justify-center items-center`}
               modalContent={
                 <span className="flex justify-center self-center items-center">
-                  <p className="text-bold font-xl text-center text-wrap">
+                  <p className="text-bold text-x2l text-center text-wrap text-black font-black ">
                     Coming Soon Stay Tuned !
                   </p>
                 </span>

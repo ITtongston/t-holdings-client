@@ -7,21 +7,22 @@ export default function EHero() {
   return (
     <div className="w-full relative    overflow-hidden   mb-[80px] flex  justify-center items-center">
       <ResponsiveHero
-        background={`/assets/images/backgrounds/tees-logo.png`}
+        background={`/assets/images/backgrounds/tes26.jpg`}
         className={`h-[700px]  md:h-[500px]`}
       />
       <div className="overlay-bg absolute top-0 left-0 flex  gap-y-8 flex-col justify-center items-start  px-4 mx-auto  h-[700px] md:h-[550px] w-full bg-black bg-opacity-60">
         <span className="font-bold font-heading  text-3xl md:text-5xl text-white  md:w-[70%]  ">
-          Welcome To TEES 2025
+          Welcome To <span className="text-red">TE</span>S 2026
         </span>
         <span className="font-semibold font-heading  text-lg md:text-xl text-white  md:w-[70%]  ">
-          Attend TEES 2024 as a delegate and look forward to ...
+          LEARN! SHOWCASE! NETWORK
           <br /> <br />
-          DATE: : 30, November, 2025 TIME: 9:00 AM WAT LOCATION: Zoom, Linkedin
-          & YouTube
+          {/* DATE: : 30, November, 2025 TIME: 9:00 AM WAT LOCATION: Zoom, Linkedin
+          & YouTube */}
+          Coming Soon
         </span>
         <div className="buttons-container flex flex-col gap-y-4 justify-start items-start    md:flex-row gap-x-5">
-          <a href="https://tees25.tongston.com" target="_blank">
+          {/* <a href="https://tees25.tongston.com" target="_blank">
             {" "}
             <Button
               text={`Register`}
@@ -29,7 +30,7 @@ export default function EHero() {
              
              w-[200px] h-[50px] border border-background-footer_black text-sm hover:border-none  `}
             />
-          </a>
+          </a> */}
         </div>
       </div>
     </div>

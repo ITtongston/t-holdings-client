@@ -25,8 +25,8 @@ export default function Inperson() {
         cards={card_data}
         className={`invisible`}
         children={
-          <span className=" text-black font-bol font-body text-xl text-cnter">
-            No In-Person Events At The Moment Please stay Tuned
+          <span className=" text-black font-black font-body text-2xl text-center">
+            No In-Person Events At The Moment Please stay Tuned !
           </span>
         }
       />

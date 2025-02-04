@@ -4,7 +4,7 @@ import React from "react";
 export default function Virtual() {
   const card_data = [
     {
-      image: "/assets/images/backgrounds/TEES 2024 header (1).jpg",
+      image: "/assets/images/backgrounds/tes26.jpg",
       title: "Welcome to TES2026",
       description: "Learn Showcase Network",
       dumbtn: "Virtual",

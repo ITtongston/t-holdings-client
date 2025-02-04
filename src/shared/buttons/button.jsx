@@ -8,6 +8,7 @@ export default function Button({
   icon,
   modalContent,
   iconClass,
+  modalClass,
 }) {
   const [isModalOpen, setModalOpen] = useState(false);
 
@@ -16,7 +17,11 @@ export default function Button({
       {/* Button to open modal (only works if modalContent exists) */}
       <button
         onClick={() => {
-          if (modalContent) setModalOpen(true); // Prevent modal from opening if modalContent is missing
+          if (modalContent) {
+            setModalOpen(true);
+          } else if (onClick) {
+            onClick(); // Calls the provided onClick function if modalContent is missing
+          }
         }}
         className={`${className} w-[150px] flex flex-row gap-x-4 justify-center items-center h-[45px] text-black font-semibold font-body bg-background-danger transform ease-in-out duration-700`}
       >
@@ -29,7 +34,11 @@ export default function Button({
 
       {/* Modal only appears if modalContent is provided */}
       {modalContent && (
-        <ReusableModal isOpen={isModalOpen} onClose={() => setModalOpen(false)}>
+        <ReusableModal
+          isOpen={isModalOpen}
+          onClose={() => setModalOpen(false)}
+          className={modalClass}
+        >
           {modalContent}
         </ReusableModal>
       )}

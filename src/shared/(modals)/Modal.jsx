@@ -3,7 +3,13 @@ import { motion, AnimatePresence } from "framer-motion";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faXmark } from "@fortawesome/free-solid-svg-icons";
 
-export const ReusableModal = ({ isOpen, onClose, children, isLoading }) => {
+export const ReusableModal = ({
+  isOpen,
+  onClose,
+  children,
+  isLoading,
+  className,
+}) => {
   useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = "hidden";
@@ -14,11 +20,25 @@ export const ReusableModal = ({ isOpen, onClose, children, isLoading }) => {
       document.body.style.overflow = "auto";
     };
   }, [isOpen]);
+
+  // function to close modal on press of escape key on keyboard
+  const handleEscapeKey = (event) => {
+    if (event.key === "Escape") {
+      onClose();
+    }
+  };
+  useEffect(() => {
+    document.addEventListener("keydown", handleEscapeKey);
+    return () => {
+      document.removeEventListener("keydown", handleEscapeKey);
+    };
+  }, []);
+
   return (
     <AnimatePresence>
       {isOpen && (
         <motion.div
-          className="fixed inset-0 z-50 bg-black bg-opacity-50 flex items-start justify-start"
+          className={`fixed inset-0 z-50 bg-black bg-opacity-50 flex items-start justify-start ${className}`}
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
