@@ -69,7 +69,13 @@ export default function EventsCard({
             </div>
             <Button
               text={card.router_btn}
-              modalContent={}
+              modalContent={
+                <span className="flex justify-center self-center items-center">
+                  <p className="text-bold font-xl text-center text-wrap">
+                    Coming Soon Stay Tuned !
+                  </p>
+                </span>
+              }
               className={`rounded-md border border-background-danger  bg-background-light text-red  hover:bg-background-danger hover:text-white  hover:border-none`}
             />
           </section>
