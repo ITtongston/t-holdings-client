@@ -6,10 +6,10 @@ export default function BusinessFlips() {
     <div className="w-full h-[fixed] bg-background-gold  py-4   flex flex-col gap-y-5 justify-center items-center  mb-[80px] p-2 ">
       <div className="container flex flex-col gap-y-3 justify-center items-center w-full h-[fixed] mt-8 ">
         <span className="text-black font-bold text-3xl  font-heading  md:text-4xl  text-center ">
-          Our Business
+          Our Businesses
         </span>
         <p className="text-black font-body font-normal   text-lg  md:text-xl ">
-          Spans across 5 segments
+          Span across 5 segments
         </p>
       </div>
       <BizCards />

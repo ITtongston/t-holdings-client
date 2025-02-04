@@ -24,8 +24,8 @@ const navLinks = [
     ],
   },
   { name: "Tongston World", href: "https://t-world.tongston.com" },
-  { name: "TworldK12", href: "http://tworldk12.zohosites.com" },
-  { name: "Tees25", href: "https://tees25.tongston.com" },
+  { name: "T-WorldK12", href: "http://tworldk12.zohosites.com" },
+  // { name: "Tees25", href: "https://tees25.tongston.com" },
   {
     name: "Innovations",
     href: "#",

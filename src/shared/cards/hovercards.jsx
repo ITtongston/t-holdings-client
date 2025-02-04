@@ -31,7 +31,7 @@ export default function HoverCards({
               backgroundRepeat: "no-repeat",
             }}
           >
-            <span className="font-heading text-2xl text-white font-bold md:text-3xl text-center">
+            <span className="font-heading text-2xl text-white font-bold md:text-3xl text-center text-wrap   md:w-[80%]">
               {card.title}
             </span>
             <span className="font-body text-lg text-white font-normal md:text-xl text-center  md:w-[50%]">
@@ -45,7 +45,7 @@ export default function HoverCards({
               className=""
             />
             <div className="overlay-text flex flex-col gap-y-5 justify-center px-4 items-start absolute top-0 left-0    w-full  md:w-[280px] h-[300px] bg-black   opacity-0 transform ease-in-out duration-700 -translate-x-full group-hover:opacity-100 group-hover:translate-x-0 group-hover:transform group-hover:duration-700 *:group-hover:ease-in-out">
-              <p className="text-white font-body text-lg    md:text-xl">
+              <p className="text-white font-body text-sm    md:text-sm">
                 {card.biz_description}
               </p>
               <div className="buttons-container flex flex-col gap-y-5 p-2">

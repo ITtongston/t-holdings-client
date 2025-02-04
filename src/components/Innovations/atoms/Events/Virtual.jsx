@@ -5,18 +5,14 @@ export default function Virtual() {
   const card_data = [
     {
       image: "/assets/images/backgrounds/TEES 2024 header (1).jpg",
-      title: "Welcome to TEES 2025",
-      description: "Attend TEES 2024 as a delegate and look forward to ...",
+      title: "Welcome to TES2026",
+      description: "Learn Showcase Network",
       dumbtn: "Virtual",
-      router_btn: (
-        <a href="" target="_blank">
-          {" "}
-          Register
-        </a>
-      ),
-      date: "Nov 30th 2025",
-      time: "9:00",
-      location: "Zoom, Linkedin",
+      router_btn: "Register",
+
+      date: "",
+      time: "",
+      location: "",
     },
   ];
   return (

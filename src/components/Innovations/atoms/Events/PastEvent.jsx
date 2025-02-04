@@ -154,7 +154,7 @@ export default function PastEvent() {
     >
       <div className="title-container w-full flex justify-center items-center  mt-8">
         <span className="font-bold font-heading text-3xl md:text-3xl text-black">
-          PAST EVENT
+          PAST EVENTS
         </span>
       </div>
 

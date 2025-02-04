@@ -69,6 +69,7 @@ export default function EventsCard({
             </div>
             <Button
               text={card.router_btn}
+              modalContent={}
               className={`rounded-md border border-background-danger  bg-background-light text-red  hover:bg-background-danger hover:text-white  hover:border-none`}
             />
           </section>

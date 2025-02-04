@@ -18,13 +18,12 @@ export default function Footer() {
     { name: "Tongston Institute", to: "/t-institute" },
     { name: "Tongston Media", to: "https://t-hub.tongston.com/t-media" },
     { name: "Tongston College ", to: "/t-college" },
-    { name: "Tongston Hub", to: "https://t-hub.tongston.com" },
   ];
 
   const company = [
     { name: "About", to: "/about" },
     { name: "Careers", to: "/careers" },
-    { name: "Tees2025", to: "https://tees25.tongston.com" },
+    // { name: "Tees2025", to: "https://tees25.tongston.com" },
   ];
 
   const support = [
@@ -48,7 +47,6 @@ export default function Footer() {
         { name: "Tongston Institute", to: "/t-institute" },
         { name: "Tongston Media", to: "https://t-hub.tongston.com/t-media" },
         { name: "Tongston College ", to: "/t-college" },
-        { name: "Tongston Hub", to: "https://t-hub.tongston.com" },
       ],
     },
     {
@@ -56,7 +54,7 @@ export default function Footer() {
       links: [
         { name: "About", to: "/about" },
         { name: "Careers", to: "/careers" },
-        { name: "Tees2025", to: "https://tees25.tongston.com" },
+        // { name: "Tees2025", to: "https://tees25.tongston.com" },
       ],
     },
     {
@@ -119,7 +117,7 @@ export default function Footer() {
 
         <section className="company-section flex flex-col gap-y-5 justify-start items-start  w-full h-[fixed]">
           <span className="font-heading text-white font-bold text-lg  md:text-xl">
-            company
+            Company
           </span>
           {company.map((link) => (
             <Link
@@ -142,7 +140,7 @@ export default function Footer() {
 
         <section className="support-section flex flex-col gap-y-5 justify-start items-start  w-full h-[fixed]">
           <span className="font-heading text-white font-bold text-lg  md:text-xl">
-            support
+            Support
           </span>
           {support.map((link) => (
             <Link
