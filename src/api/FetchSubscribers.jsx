@@ -13,9 +13,7 @@ export default function SubscriberList() {
   useEffect(() => {
     const fetchSubscribers = async () => {
       try {
-        const response = await axios.get(
-          "https://hold-api.onrender.com/newsletter"
-        );
+        const response = await axios.get(process.env.NEXT_PUBLIC_SUBSCRIBER);
         setSubscribers(response.data);
       } catch (err) {
         setError("Failed to load subscribers");
@@ -57,17 +55,17 @@ export default function SubscriberList() {
   };
 
   return (
-    <div className="p-6 bg-white rounded-lg shadow-md w-[90%] mx-auto pt-[4rem]">
-      <div className="flex justify-between items-center mb-4">
+    <div className="p-6 bg-white rounded-lg shadow-md w-full  mx-auto pt-[4rem]">
+      <div className="flex   flex-col gap-y-2 md:flex-row justify-start  items-start  md:justify-between md:items-center mb-4">
         <h2 className="text-base font-bold text-red font-heading">
           Subscribers List
         </h2>
         <button
           onClick={downloadPDF}
-          className="  flex flex-row gap-x-2 justify-center items-center  bg-background-gold  transform duration-700 ease-in-out text-black    hover:bg-background-dark hover:text-white  px-4 py-2 rounded-lg"
+          className="flex flex-row gap-x-2 justify-center items-center bg-transparent border border-background-footer_black text-black transform duration-700 ease-in-out  hover:border-background-danger   px-4 py-2 rounded-lg"
         >
-          Download List
-          <FontAwesomeIcon icon={faDownload} className="text-sm text-white" />
+          Get List
+          <FontAwesomeIcon icon={faDownload} className="text-xs text-black" />
         </button>
       </div>
 

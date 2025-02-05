@@ -89,7 +89,7 @@ export default function Form() {
     if (isValid) {
       try {
         const response = await axios.post(
-          "https://hold-api.onrender.com/contact",
+          process.env.NEXT_PUBLIC_CONTACT,
           formData
         );
         if (response.status === 200 || response.status === 201) {
