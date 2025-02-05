@@ -4,7 +4,7 @@ import React from "react";
 export default function ConnectedBusiness() {
   return (
     <div
-      className="w-full h-[600px] bg-background-light flex flex-col gap-y-5 justify-center items-center self-center  "
+      className="w-full left-0 right-0  h-[600px] bg-background-light flex flex-col gap-y-5 justify-center items-center self-center  "
       style={{
         background: `url("/assets/images/career/carreerbg5.png")`,
         backgroundRepeat: "no-repeat",
@@ -17,7 +17,7 @@ export default function ConnectedBusiness() {
       {" "}
       <section className="title-container w-full flex justify-center items-center text-center pt-5 ">
         {" "}
-        <h1 className="text-white font-bold text-xl  font-heading  md:text-3xl  text-center ">
+        <h1 className="text-white font-bold text-3xl  font-heading  md:text-4xl  text-center ">
           Our Interconnected Businesses
         </h1>
       </section>

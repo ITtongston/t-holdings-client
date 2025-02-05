@@ -29,9 +29,9 @@ export default function FreeAccordion({ accordions = [], className = "" }) {
             width: "100%",
             boxShadow: "20 20 10",
           }}
-          className={`hover:border-l-4 hover:border-l-background-gold hover:transition-transform hover:duration-1000 hover:ease-in-out transition-transform duration-1000 ease-in-out ${
+          className={`hover:border-l-4    hover:border-l-background-danger hover:transition-transform hover:duration-1000 hover:ease-in-out transition-transform duration-1000 ease-in-out ${
             expanded === `panel${index}`
-              ? "border-l-4 border-l-background-gold"
+              ? "border-l-4 border-l-background-danger"
               : ""
           }`}
         >
@@ -74,7 +74,7 @@ export default function FreeAccordion({ accordions = [], className = "" }) {
               className="bg-transparent w-full h-auto flex flex-col justify-start items-start"
             >
               <section
-                className={`contents-container  px-2 bg-background-footer_black bg-opacity-70  h-[fixed] w-full flex flex-col justify-start items-start text-base font-body text-white font-normal ${className}`}
+                className={`contents-container p-3  px-2 bg-background-dark bg-opacity-70  h-[fixed] w-full flex flex-col justify-start items-start text-base font-body text-white font-normal ${className}`}
               >
                 <div className="flex flex-row  justify-start items-start  w-full">
                   <p className="text-white   font-normal font-body text-base  mb-2">

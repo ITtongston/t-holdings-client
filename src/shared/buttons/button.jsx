@@ -19,8 +19,6 @@ export default function Button({
         onClick={() => {
           if (modalContent) {
             setModalOpen(true);
-          } else if (onClick) {
-            onClick(); // Calls the provided onClick function if modalContent is missing
           }
         }}
         className={`${className} w-[150px] flex flex-row gap-x-4 justify-center items-center h-[45px] text-black font-semibold font-body bg-background-danger transform ease-in-out duration-700`}

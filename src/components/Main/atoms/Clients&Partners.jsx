@@ -109,7 +109,7 @@ export default function ClientsPartners() {
   ];
 
   return (
-    <div className="w-full h-[fixed] pb-5  bg-background-light flex flex-col gap-y-[4rem]  justify-center items-center py-4   mb-[80px]">
+    <div className="w-full h-[fixed] pb-5  bg-background-light flex flex-col gap-y-[4rem]  justify-center items-center py-4   mb-[70px]">
       <section className="clientele-section flex flex-col gap-y-[2rem] justify-center items-center  w-[90%] ">
         <span className="text-black font-bold text-3xl  font-heading  md:text-4xl  text-center ">
           Our Clientele
@@ -131,14 +131,15 @@ export default function ClientsPartners() {
         />
       </section>
 
-      <section className="partners-section flex flex-col gap-y-[2rem] justify-center items-center  w-[90%]">
+      <section className="partners-section flex flex-col gap-y-4 justify-center items-center  w-[90%]">
         <span className="text-black font-bold text-3xl  font-heading  md:text-4xl  text-center ">
           Our Partners & Affiliates
         </span>
         <Marquee
           marquees={partners}
           speed={20}
-          className={`  h-auto  md:w-[70%] w-[auto] p-2 `}
+          className={`  h-[fixed]  md:w-[70%] w-[auto]  `}
+          imageClass={`w-[200px]  h-[200px]  object-cover`}
         />
       </section>
     </div>

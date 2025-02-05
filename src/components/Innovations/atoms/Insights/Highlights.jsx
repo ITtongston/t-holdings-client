@@ -34,7 +34,7 @@ export default function Highlights() {
   return (
     <div className="flex flex-col gap-y-[3rem] justify-center items-start w-full h-[fixed] px-4   md:ml-[4rem] pb-6">
       <span className="font-bold font-heading  text-3xl md:text-3xl text-black  md:w-[70%]  ">
-        LATEST!
+        LATEST
       </span>
 
       <section className="highlights-container w-full  mx-auto flex flex-col gap-y-5  mb-[3rem]">

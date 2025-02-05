@@ -3,7 +3,7 @@ import React from "react";
 export default function WhyJoinUs() {
   return (
     <div className="w-full h-[600px] p-2 bg-background-gold flex justify-center items-center flex-col gap-y-8">
-      <h1 className="text-black font-bold text-xl  font-heading  md:text-3xl  text-center ">
+      <h1 className="text-black font-bold text-3xl  font-heading  md:text-4xl  text-center ">
         Why Work With Us
       </h1>
       <section className="youtube-video-section w-full h-[400px] flex justify-center items-center  md:w-[90%]">

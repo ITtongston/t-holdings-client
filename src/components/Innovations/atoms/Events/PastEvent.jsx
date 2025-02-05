@@ -153,7 +153,7 @@ export default function PastEvent() {
       }}
     >
       <div className="title-container w-full flex justify-center items-center  mt-8">
-        <span className="font-bold font-heading text-3xl md:text-3xl text-black">
+        <span className="font-bold font-heading text-3xl md:text-4xl text-black">
           PAST EVENTS
         </span>
       </div>

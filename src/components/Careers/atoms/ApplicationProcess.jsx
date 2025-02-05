@@ -17,7 +17,7 @@ export default function ApplicationProcess() {
       {" "}
       <section className="title-container w-full flex justify-center items-center text-center pt-5 ">
         {" "}
-        <h1 className="text-black font-bold text-xl  font-heading  md:text-3xl  text-center ">
+        <h1 className="text-black font-bold text-3xl  font-heading  md:text-4xl  text-center ">
           Application Process
         </h1>
       </section>
@@ -32,7 +32,7 @@ export default function ApplicationProcess() {
         />
       </section>
       <section className="download-section w-full h-[fixed] flex justify-center items-center self-center">
-        <a href="" download>
+        <a href="/assets/files/Tongston Recruitment Process.pdf" download>
           {" "}
           <Button
             text={`Documentation`}

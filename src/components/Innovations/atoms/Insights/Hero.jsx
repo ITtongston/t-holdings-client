@@ -24,7 +24,7 @@ export default function Hero() {
               <div className="p-2">
                 {" "}
                 <iframe
-                  src=""
+                  src="/assets/files/Teem 2024_.pdf"
                   height={600}
                   width={500}
                   className="bg-background-light"
@@ -33,7 +33,7 @@ export default function Hero() {
             }
           />
 
-          <Button
+          {/* <Button
             text={`TEES Pitches Prizes`}
             className={` bg-background-light    rounded-xl   hover:bg-background-gold  
              
@@ -49,7 +49,7 @@ export default function Hero() {
                 ></iframe>
               </div>
             }
-          />
+          /> */}
         </div>
       </div>
     </div>

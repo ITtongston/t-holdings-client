@@ -65,7 +65,7 @@ export default function InIt() {
   ];
   return (
     <div className="w-full    h-[fixed]     flex  flex-col gap-y-5  justify-center items-center p-2 py-5 mt-[4rem]  mb-[4rem]">
-      <h1 className="text-black font-bold text-xl  font-heading  md:text-3xl  text-center ">
+      <h1 className="text-black font-bold text-3xl  font-heading  md:text-4xl  text-center ">
         What's In It For You
       </h1>
       <section className="accordion-section w-full flex flex-col justify-center items-center  md:w-[90%]">

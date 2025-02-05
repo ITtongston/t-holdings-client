@@ -72,7 +72,7 @@ export default function EventsCard({
               modalClass={`justify-center items-center`}
               modalContent={
                 <span className="flex justify-center self-center items-center">
-                  <p className="text-bold text-x2l text-center text-wrap text-black font-black ">
+                  <p className="text-bold text-x2l text-center text-wrap text-black font-black  animate-bounce  ">
                     Coming Soon Stay Tuned !
                   </p>
                 </span>

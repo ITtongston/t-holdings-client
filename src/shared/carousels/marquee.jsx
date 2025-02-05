@@ -7,6 +7,7 @@ export default function Marquees({
   marquees,
   speed = 40, // Default speed if not provided
   className,
+  imageClass,
   className2,
 }) {
   return (
@@ -36,7 +37,7 @@ export default function Marquees({
                     alt={`image-${imgIndex}`}
                     width={150}
                     height={100}
-                    className={`max-w-[180px] h-[100px] object-contain ${className2}`}
+                    className={`max-w-[180px] h-[100px] object-contain ${imageClass}`}
                   />
                 </div>
               </div>

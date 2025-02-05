@@ -136,8 +136,8 @@ export default function Form() {
   // Array of options for the dropdown
   const topics = [
     {
-      value: "Participating in TEES 2024",
-      label: "Participating in TEES 2024",
+      value: "Participating in TES 2026",
+      label: "Participating in TES 2026",
     },
     {
       value: "Investing in Tongston and its intrapreneurs and entrepreneurs",
@@ -216,7 +216,7 @@ export default function Form() {
           name="topic_of_interest"
           value={formData.topic_of_interest}
           onChange={handleChange}
-          className="border border-gray-300  text-white text-sm p-2 w-full bg-black"
+          className="border border-gray-300  text-white text-sm p-2 w-full text-wrap  bg-black"
         >
           <option value="" disabled>
             I'm interested in ...
@@ -254,7 +254,7 @@ export default function Form() {
           className={`px-6 py-2 rounded-md ${
             isLoading
               ? "bg-gray-400"
-              : "bg-background-gold  hover:bg-background-light"
+              : "bg-background-gold  hover:bg-background-light hover:text-black"
           } text-white`}
           disabled={isLoading}
         />
