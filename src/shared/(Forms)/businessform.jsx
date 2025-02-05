@@ -113,7 +113,7 @@ export default function BusinessForm() {
     if (isValid) {
       try {
         const response = await axios.post(
-          process.env.NEXT_PUBLIC_BUSINESS,
+          "https://hold-api.onrender.com/business",
           formData
         );
         if (response.status === 200 || response.status === 201) {

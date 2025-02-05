@@ -70,7 +70,7 @@ export default function MailingList() {
       // Check if email already exists
       const checkResponse = await axios.get(
         // `https://hold-api.onrender.com/newsletter/check-email?email=${email}`,
-        `${process.env.NEXT_PUBLIC_SUBSCRIBER_CHECK}?email=${email}`
+        `https://hold-api.onrender.com/newsletter/check-email?email=${email}`
       );
 
       if (checkResponse.data.exists) {
@@ -85,7 +85,7 @@ export default function MailingList() {
 
       // If email doesn't exist, proceed with submission
       const response = await axios.post(
-        process.env.NEXT_PUBLIC_SUBSCRIBER,
+        "https://hold-api.onrender.com/newsletter",
 
         formData
       );
