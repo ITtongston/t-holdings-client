@@ -31,6 +31,7 @@
     "react-card-flip": "^1.2.3",
     "react-dom": "^18.2.0",
     "react-fast-marquee": "^1.6.5",
+    "react-pro-sidebar": "^1.1.0",
     "react-toastify": "^11.0.3",
     "sharp": "^0.33.5",
     "swiper": "^11.2.1",

@@ -6,9 +6,11 @@ import {
   faBars,
   faTimes,
   faChevronRight,
+  faUser,
 } from "@fortawesome/free-solid-svg-icons";
 import Image from "next/image";
 import Link from "next/link";
+import Button from "@/shared/buttons/button";
 
 const navLinks = [
   { name: "About", href: "/about" },
@@ -108,7 +110,14 @@ export default function Navbar() {
                 </Link>
               )}
             </div>
-          ))}
+          ))}{" "}
+          <Link href={`/admin`}>
+            <Button
+              text={`login`}
+              icon={faUser}
+              className={`bg-background-gold text-black hover:bg-background-dark hover:text-white  w-[90px] `}
+            />
+          </Link>
         </div>
 
         {/* Mobile Hamburger Menu */}
@@ -167,7 +176,14 @@ export default function Navbar() {
                       </Link>
                     )}
                   </div>
-                ))}
+                ))}{" "}
+                <Link href={`/admin`} onClick={() => setMobileMenuOpen(false)}>
+                  <Button
+                    text={`login`}
+                    icon={faUser}
+                    className={`bg-background-gold text-black hover:bg-background-dark hover:text-white  w-[90px] `}
+                  />
+                </Link>
               </div>
             </div>
           )}

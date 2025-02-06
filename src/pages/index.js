@@ -1,6 +1,8 @@
 import React from "react";
 import Con from "@/components/Main/container";
 import Head from "next/head";
+import Navbar from "@/components/Navigations/nav1";
+import Footer from "@/components/Navigations/Footer";
 
 const index = () => {
   return (
@@ -23,7 +25,9 @@ const index = () => {
         </Head>
       </>
       {/* render container with atoms  */}
+      <Navbar />
       <Con />
+      <Footer />
     </div>
   );
 };

@@ -4,6 +4,7 @@ import "./globals.css";
 import "./page.module.css";
 import { config } from "@fortawesome/fontawesome-svg-core";
 import "@fortawesome/fontawesome-svg-core/styles.css";
+
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Navbar from "@/components/Navigations/nav1";
@@ -64,9 +65,9 @@ function MyApp({ Component, pageProps }) {
       </Head>
 
       <div>
-        <Navbar />
+        {/* <Navbar /> */}
         <Component {...pageProps} />
-        <Footer />
+        {/* <Footer /> */}
         <ToastContainer />
       </div>
     </>
