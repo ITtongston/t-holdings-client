@@ -83,7 +83,7 @@ export const BlogManager = () => {
 
   const handleShare = (blog) => {
     // Implement your social media sharing logic here
-    const shareUrl = `yourwebsite.com/blog/${blog._id}`; // Replace with your actual URL
+    const shareUrl = `https://tongston.com/insights/${blog._id}`; // Replace with your actual URL
     // Example using the Web Share API (if supported by the browser):
     if (navigator.share) {
       navigator
@@ -110,23 +110,23 @@ export const BlogManager = () => {
         {blogs.map((blog) => (
           <li
             key={blog._id}
-            className={`border hover:scale-105 transform duration-700 ease-in-out  p-4 mb-4  shadow-lg rounded-md gap-y-5 flex flex-col h-[300px] w-[300px] bg-gradient-to-br from-background-gold  to-orange-600  
+            className={`border hover:scale-105 transform duration-700 ease-in-out  p-4 mb-4  shadow-lg rounded-md gap-y-5 flex flex-col h-[fixed] w-[250px]  bg-background-dark   
             `}
           >
-            <h3 className="text-black font-bold text-sm font-heading ">
+            <h3 className="text-white font-bold text-sm font-heading ">
               {blog.title}
             </h3>
             <Image
               priority
-              src={`/uploads/${blog.image}`}
+              src={`https://hold-api.onrender.com/${blog.image}`}
               alt={blog.title}
-              width={50}
-              height={50}
-              className="w-32 h-32 object-contain"
+              width={500}
+              height={500}
+              className="w-full h-[200px] object-cover"
             />{" "}
             {/* Display image */}
             <p className="text-sm font-body text-white ">
-              {blog.content.slice(0, 200)}...
+              {blog.content.slice(0, 50)}...
             </p>{" "}
             {/* Display a snippet */}
             <section className="grid grid-cols-3 justify-center items-start mt-auto mb-3">
@@ -136,7 +136,7 @@ export const BlogManager = () => {
               >
                 <FontAwesomeIcon
                   icon={faEdit}
-                  className="text-base text-black"
+                  className="text-base text-white"
                 />
               </button>
               <button
@@ -145,13 +145,13 @@ export const BlogManager = () => {
               >
                 <FontAwesomeIcon
                   icon={faTrash}
-                  className="text-base text-black"
+                  className="text-base text-white"
                 />
               </button>
               <button onClick={() => handleShare(blog)} className="">
                 <FontAwesomeIcon
                   icon={faShareAlt}
-                  className="text-base text-black"
+                  className="text-base text-white"
                 />
               </button>
             </section>
