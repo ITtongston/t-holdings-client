@@ -6,15 +6,9 @@ import Button from "@/shared/buttons/button";
 import { faShareAlt } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import DOMPurify from "dompurify";
-import { Swiper, SwiperSlide } from "swiper/react";
-import "swiper/css";
-import "swiper/css/pagination";
-import "swiper/css/navigation";
-import "swiper/css/effect-fade"; // Import effect-fade.css
-import { Navigation, Autoplay } from "swiper/modules";
 
 export default function PostDisplay() {
-  const [slidesPerView, setSlidesPerView] = useState(4);
+  const [slidesPerView, setSlidesPerView] = useState(3);
 
   useEffect(() => {
     const handleResize = () => {
@@ -36,7 +30,7 @@ export default function PostDisplay() {
   }, []);
 
   const [posts, setPosts] = useState([]);
-  const [visiblePosts, setVisiblePosts] = useState(4); // Initial number of visible cards
+  const [visiblePosts, setVisiblePosts] = useState(3); // Initial number of visible cards
   const [showMore, setShowMore] = useState(true); // State for "See More" button
 
   useEffect(() => {
@@ -53,15 +47,16 @@ export default function PostDisplay() {
   }, []); // Fetch posts only once on component mount
 
   const handleShowMore = () => {
-    setVisiblePosts(visiblePosts + 4); // Show 4 more cards
-    if (visiblePosts >= posts.length) {
-      setShowMore(false); // Hide "See More" if all cards are shown
+    setVisiblePosts(visiblePosts + 3);
+    if (visiblePosts + 3 >= posts.length) {
+      // Check before setting showMore to false
+      setShowMore(false);
     }
   };
 
   const handleShowLess = () => {
-    setVisiblePosts(4); // Show only 4 cards
-    setShowMore(true); // Show "See More" button
+    setVisiblePosts(3);
+    setShowMore(true); // Crucial: Set showMore back to true!
   };
 
   const handleShare = (post) => {
@@ -101,30 +96,37 @@ export default function PostDisplay() {
   };
 
   return (
-    <div className="w-full p-2 pb-6 md:p-8 flex flex-col gap-y-5 justify-start items-start mb-[80px]">
+    <div className="w-full h-[fixed] p-2 pb-6 md:p-8 flex flex-col gap-y-5 justify-start items-start mb-[80px]">
       <span className="font-bold font-heading text-3xl md:text-3xl text-black md:ml-[3rem]">
         LATEST
       </span>
 
-      <section className="post-container grid grid-cols-3 w-full justify-center items-center p-2   md:w-[95%] mx-auto">
+      <section className="post-container grid   grid-cols-1    md:grid-cols-3  gap-y-5  gap-x-4 w-full justify-center items-center p-2   md:w-[95%] h-[fixed] mx-auto">
         {posts.slice(0, visiblePosts).map(
           (
-            post // Slice the posts array
+            post,
+            index // Slice the posts array
           ) => (
             <div
               key={post._id}
-              className="w-[300px] h-[400px] border border-background-gold  p-3 rounded-md shadow-xl bg-background-light flex flex-col gap-y-5 justify-start items-start"
+              className={`  group overflow-hidden  w-full    md:w-[300px] h-[400px] border border-background-gold  p-3 rounded-md shadow-xl bg-background-light flex flex-col gap-y-5 justify-start items-start ${
+                index === 0
+                  ? "md:col-span-2    md:w-full "
+                  : index === 2
+                  ? "md:col-span-2   md:w-full "
+                  : ""
+              }`}
             >
               <Image
                 priority
                 src={`https://hold-api.onrender.com/${post.image}`} // Corrected path - removed extra space
                 width={4500}
                 height={500}
-                className="w-full h-[200px] object-cover"
+                className="w-full h-[200px] object-cover   group-hover:scale-105  transform ease-in-out duration-700"
                 alt={post.title} // Add alt text for accessibility
               />
               <h6 className="text-black font-black font-heading text-base hover:underline transform duration-700 ease-in-out">
-                {post.title}
+                {post.title.slice(0, 100)}...
               </h6>{" "}
               {/* add a paragraph with slice  */}
               <p className="text-black font-body text-sm  md:text-base">
@@ -135,7 +137,7 @@ export default function PostDisplay() {
                 className={` mt-auto  bg-background-light border w-[80px] border-background-footer_black text-black  rounded-md`}
                 modalClass={`justify-start items-start `}
                 modalContent={
-                  <div className=" flex flex-col gap-y-4  h-screen  w-[full]  ">
+                  <div className=" flex flex-col gap-y-4  h-screen  w-[full] mb-[5rem] ">
                     <h6 className="text-black font-black font-heading text-base">
                       {post.title}
                     </h6>{" "}
@@ -157,25 +159,26 @@ export default function PostDisplay() {
           )
         )}
       </section>
+      <section className="ml-[2rem]">
+        {/* Conditionally render "See More" or "See Less" button */}
+        {visiblePosts < posts.length && ( // Show "See More" if not all posts are shown
+          <button
+            onClick={handleShowMore}
+            className="mt-4 text-black font-bold py-2 px-4 rounded"
+          >
+            See More
+          </button>
+        )}
 
-      {/* Conditionally render "See More" or "See Less" button */}
-      {showMore && visiblePosts < posts.length && (
-        <button
-          onClick={handleShowMore}
-          className="mt-4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-        >
-          See More
-        </button>
-      )}
-
-      {!showMore && visiblePosts >= posts.length && (
-        <button
-          onClick={handleShowLess}
-          className="mt-4 bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded"
-        >
-          See Less
-        </button>
-      )}
+        {visiblePosts > 3 && ( // Show "See Less" if more than 3 posts are shown
+          <button
+            onClick={handleShowLess}
+            className="mt-4 text-black font-bold py-2 px-4 rounded"
+          >
+            See Less
+          </button>
+        )}
+      </section>
     </div>
   );
 }

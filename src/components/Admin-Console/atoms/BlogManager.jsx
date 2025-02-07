@@ -3,11 +3,16 @@
 
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import Button from "@/shared/buttons/button"; // Import your button component
+import Button from "@/shared/buttons/button";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash, faEdit, faShareAlt } from "@fortawesome/free-solid-svg-icons";
+import dynamic from "next/dynamic";
+import DOMPurify from "dompurify";
+
+const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
+import "react-quill/dist/quill.snow.css";
 
 export const BlogManager = () => {
   const [blogs, setBlogs] = useState([]);
@@ -16,7 +21,7 @@ export const BlogManager = () => {
     title: "",
     content: "",
     image: null,
-  }); // For editing
+  });
   const router = useRouter();
 
   useEffect(() => {
@@ -34,8 +39,8 @@ export const BlogManager = () => {
 
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`https://hold-api.onrender.com/blogs/${id}`); // Add a delete route to your API
-      fetchBlogs(); // Refresh the blog list
+      await axios.delete(`https://hold-api.onrender.com/blogs/${id}`);
+      fetchBlogs();
     } catch (error) {
       console.error("Error deleting blog:", error);
     }
@@ -43,7 +48,7 @@ export const BlogManager = () => {
 
   const handleEdit = (blog) => {
     setEditingBlog(blog);
-    setNewBlogData({ ...blog, image: null }); // Initialize edit form with existing data
+    setNewBlogData({ ...blog, image: null, content: blog.content || "" });
   };
 
   const handleUpdate = async (e) => {
@@ -53,21 +58,16 @@ export const BlogManager = () => {
       formData.append("title", newBlogData.title);
       formData.append("content", newBlogData.content);
       if (newBlogData.image) {
-        // Only append image if a new one is selected
         formData.append("image", newBlogData.image);
       }
 
       await axios.put(
         `https://hold-api.onrender.com/blogs/${editingBlog._id}`,
         formData,
-        {
-          headers: {
-            "Content-Type": "multipart/form-data",
-          },
-        }
+        { headers: { "Content-Type": "multipart/form-data" } }
       );
-      setEditingBlog(null); // Close the edit form
-      fetchBlogs(); // Refresh the blog list
+      setEditingBlog(null);
+      fetchBlogs();
     } catch (error) {
       console.error("Error updating blog:", error);
     }
@@ -81,54 +81,47 @@ export const BlogManager = () => {
     setNewBlogData({ ...newBlogData, image: e.target.files[0] });
   };
 
+  const handleEditorChange = (value) => {
+    setNewBlogData({ ...newBlogData, content: value });
+  };
+
   const handleShare = (blog) => {
-    // Implement your social media sharing logic here
-    const shareUrl = `https://tongston.com/insights/${blog._id}`; // Replace with your actual URL
-    // Example using the Web Share API (if supported by the browser):
+    const shareUrl = `https://tongston.com/insights/${blog._id}`;
     if (navigator.share) {
       navigator
-        .share({
-          title: blog.title,
-          url: shareUrl,
-        })
-        .then(() => {
-          console.log("Successfully shared");
-        })
-        .catch((error) => {
-          console.error("Error sharing:", error);
-        });
+        .share({ title: blog.title, url: shareUrl })
+        .then(() => console.log("Successfully shared"))
+        .catch((error) => console.error("Error sharing:", error));
     } else {
-      // Fallback for browsers that don't support Web Share API
       alert(`Share this link: ${shareUrl}`);
     }
   };
 
   return (
-    <div className="w-full h-full flex flex-col gap-y-8  relative  ">
-      <h2 className="text-black font-bold text-2xl  "> Manage Posts</h2>
-      <ul className="grid grid-cols-3 gap-x-7">
+    <div className="w-full h-full flex flex-col gap-y-8 relative">
+      <h2 className="text-black font-bold text-2xl">Manage Posts</h2>
+      <ul className="grid grid-cols-3 gap-x-7 gap-y-7 ">
         {blogs.map((blog) => (
           <li
             key={blog._id}
-            className={`border hover:scale-105 transform duration-700 ease-in-out  p-4 mb-4  shadow-lg rounded-md gap-y-5 flex flex-col h-[fixed] w-[250px]  bg-background-dark   
-            `}
+            className="border p-4 shadow-lg rounded-md bg-background-dark"
           >
-            <h3 className="text-white font-bold text-sm font-heading ">
+            <h3 className="text-white font-bold text-sm font-heading">
               {blog.title}
             </h3>
             <Image
-              priority
               src={`https://hold-api.onrender.com/${blog.image}`}
               alt={blog.title}
               width={500}
               height={500}
               className="w-full h-[200px] object-cover"
-            />{" "}
-            {/* Display image */}
-            <p className="text-sm font-body text-white ">
-              {blog.content.slice(0, 50)}...
-            </p>{" "}
-            {/* Display a snippet */}
+            />
+            <div
+              dangerouslySetInnerHTML={{
+                __html: DOMPurify.sanitize(blog.content.slice(0, 50) + "..."),
+              }}
+              className="text-sm font-body text-white"
+            />
             <section className="grid grid-cols-3 justify-center items-start mt-auto mb-3">
               <button
                 onClick={() => handleEdit(blog)}
@@ -148,7 +141,7 @@ export const BlogManager = () => {
                   className="text-base text-white"
                 />
               </button>
-              <button onClick={() => handleShare(blog)} className="">
+              <button onClick={() => handleShare(blog)}>
                 <FontAwesomeIcon
                   icon={faShareAlt}
                   className="text-base text-white"
@@ -161,7 +154,7 @@ export const BlogManager = () => {
 
       {editingBlog && (
         <div className="border p-4">
-          <h2 className="text-black font-bold text-2xl  "> Edit Posts</h2>
+          <h2 className="text-black font-bold text-2xl">Edit Posts</h2>
           <form onSubmit={handleUpdate} className="space-y-4">
             <div>
               <label className="block">Title</label>
@@ -170,19 +163,16 @@ export const BlogManager = () => {
                 name="title"
                 value={newBlogData.title}
                 onChange={handleInputChange}
-                className="w-full p-2  text-black text-sm  rounded bg-transparent border border-background-dark "
+                className="w-full p-2 text-black text-sm rounded bg-transparent border"
                 required
               />
             </div>
             <div>
               <label className="block">Content</label>
-              <textarea
-                name="content"
+              <ReactQuill
                 value={newBlogData.content}
-                onChange={handleInputChange}
-                className="w-full p-2 h-[200px] text-black text-sm  bg-transparent border border-background-dark rounded"
-                rows="4"
-                required
+                onChange={handleEditorChange}
+                className="w-full h-[200px] text-black text-sm bg-transparent border rounded"
               />
             </div>
             <div>
@@ -191,29 +181,30 @@ export const BlogManager = () => {
                 type="file"
                 name="image"
                 onChange={handleImageChange}
-                className="w-full p-2 border rounded border-background-dark bg-transparent  text-xs text-black "
+                className="w-full p-2 border rounded bg-transparent text-xs text-black"
               />
               {editingBlog.image && (
                 <Image
                   width={100}
                   height={100}
-                  src={`/uploads/${editingBlog.image}`}
+                  src={`https://hold-api.onrender.com/${editingBlog.image}`}
                   alt={editingBlog.title}
                   className="w-32 h-32 object-cover mt-2"
                 />
-              )}{" "}
-              {/* Show current image */}
+              )}
             </div>
+
             <button
               type="submit"
-              className="bg-background-gold text-black  w-[100px]"
+              className="bg-background-gold text-black w-[100px]"
             >
               Update
             </button>
+
             <button
               onClick={() => setEditingBlog(null)}
               text="Cancel"
-              className="b ml-2 bg-background-footer_black text-white    w-[100px]"
+              className="b ml-2 bg-background-footer_black text-white w-[100px]"
             >
               cancel
             </button>

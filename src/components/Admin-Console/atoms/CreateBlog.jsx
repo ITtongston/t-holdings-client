@@ -7,15 +7,13 @@ import {
   showErrorNotification,
   showSuccessNotification,
 } from "@/shared/Notification/Notification";
-import emailjs from "@emailjs/browser"; // Import emailjs
-
-// Initialize EmailJS (replace with your actual keys)
-emailjs.init("YOUR_EMAILJS_USER_ID"); // Get your User ID from EmailJS
+import emailjs from "@emailjs/browser"; // Import EmailJS
 
 export const CreateBlog = () => {
   const [title, setTitle] = useState("");
   const [image, setImage] = useState(null);
   const [content, setContent] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -25,7 +23,20 @@ export const CreateBlog = () => {
     formData.append("image", image);
     formData.append("content", content);
 
+    setLoading(true);
+
+    // Load EmailJS credentials from environment variables
+    const service_id = process.env.NEXT_PUBLIC_EMAIL_JS_SERVICE_ID;
+    const template_id = process.env.NEXT_PUBLIC_BLOG_NOTIFY_TEMPLATE_ID;
+    const user_id = process.env.NEXT_PUBLIC_EMAIL_JS_API_KEY;
+
+    // Debugging logs to check if environment variables are loaded
+    console.log("Service ID:", service_id);
+    console.log("Template ID:", template_id);
+    console.log("User ID:", user_id);
+
     try {
+      // Create a new blog post
       const response = await axios.post(
         "https://hold-api.onrender.com/blogs",
         formData,
@@ -35,98 +46,111 @@ export const CreateBlog = () => {
           },
         }
       );
-      showSuccessNotification("Blog post created:", response.data);
 
-      // Fetch subscriber emails and send notifications
+      showSuccessNotification("Blog post created successfully!");
+      const postLink = `https://tongston.com/insights/${response.data._id}`; // Adjust your post URL
+
+      // Fetch subscriber emails
       try {
         const mailListResponse = await axios.get(
           "https://hold-api.onrender.com/newsletter"
-        ); // Replace with your endpoint
-        const subscribers = mailListResponse.data; // Assuming your endpoint returns an array of email addresses
+        );
+
+        const subscribers = mailListResponse.data; // Assuming it returns an array of subscriber objects
 
         if (subscribers && subscribers.length > 0) {
-          const postLink = `https://tongston.com/insights/${response.data._id}`; // Replace with your domain and post URL structure
+          // Send emails to all subscribers using Promise.all()
+          await Promise.all(
+            subscribers.map(async (subscriber) => {
+              try {
+                await emailjs.send(
+                  service_id,
+                  template_id,
+                  {
+                    email: subscriber.email, // Ensure your EmailJS template has {email}
+                    subject: "Tongston has created a new post!",
+                    message: `Hello ${subscriber.name},\n\nA new post "${title}" has been published on Tongston. Check it out here: ${postLink}`,
+                  },
+                  user_id // Pass User ID here
+                );
+                console.log(`Email sent to ${subscriber.email}`);
+              } catch (emailError) {
+                console.error(
+                  `Error sending email to ${subscriber.email}:`,
+                  emailError
+                );
+                showErrorNotification(
+                  `Error sending email to ${subscriber.email}`
+                );
+              }
+            })
+          );
 
-          subscribers.forEach(async (subscriber) => {
-            try {
-              await emailjs.send(
-                "YOUR_EMAILJS_SERVICE_ID",
-                "YOUR_EMAILJS_TEMPLATE_ID",
-                {
-                  // Replace with your Service ID and Template ID
-                  to_email: subscriber.email, // Assuming each subscriber object has an 'email' property
-                  subject: "New Blog Post!",
-                  message: ` Hello ${subscriber.full_name}, A new  post "${title}" has been published on tongston.com.  Check it out here: ${postLink}`,
-                }
-              );
-              console.log(`Email sent to ${subscriber.email}`);
-            } catch (emailError) {
-              console.error(
-                `Error sending email to ${subscriber.email}:`,
-                emailError
-              );
-              showErrorNotification(
-                `Error sending email to ${subscriber.email}:`,
-                emailError
-              ); // Notify about individual email sending failures
-            }
-          });
-          showSuccessNotification("Notification emails sent to subscribers.");
+          showSuccessNotification(
+            `Notification emails sent to ${subscribers.length} subscribers.`
+          );
         } else {
           showSuccessNotification("No subscribers found.");
         }
       } catch (mailListError) {
         console.error("Error fetching mail list:", mailListError);
-        showErrorNotification("Error fetching mail list:", mailListError);
+        showErrorNotification("Error fetching subscriber list.");
       }
 
+      // Reset form fields after submission
       setTitle("");
       setImage(null);
       setContent("");
     } catch (error) {
       console.error("Error creating blog post:", error);
-      showErrorNotification("Error creating blog post:", error);
+      showErrorNotification("Error creating blog post.");
+    } finally {
+      setLoading(false);
     }
   };
 
   return (
     <form onSubmit={handleSubmit} className="space-y-4">
       <div>
-        <label className="block">Blog Title</label>
+        <label className="block text-black">Blog Title</label>
         <input
           type="text"
           value={title}
           onChange={(e) => setTitle(e.target.value)}
-          className="w-full  text-black font-body  text-sm p-2 border border-background-dark focus:outline-none  focus:ring-2 focus:ring-offset-background-danger  rounded bg-transparent"
+          className="w-full text-black font-body text-sm p-2 border border-background-dark focus:outline-none focus:ring-2 focus:ring-offset-background-danger rounded bg-transparent"
           required
         />
       </div>
 
       <div>
-        <label className="block">Blog Image</label>
+        <label className="block text-black">Blog Image</label>
         <input
           type="file"
           onChange={(e) => setImage(e.target.files[0])}
-          className="w-full  text-black font-body text-sm p-2 border border-background-dark focus:outline-none  focus:ring-2 focus:ring-offset-background-danger  rounded bg-transparent"
+          className="w-full text-black font-body text-sm p-2 border border-background-dark focus:outline-none focus:ring-2 focus:ring-offset-background-danger rounded bg-transparent"
           required
         />
       </div>
 
       <div>
-        <label className="block">Blog Content</label>
+        <label className="block text-black">Blog Content</label>
         <textarea
           value={content}
           onChange={(e) => setContent(e.target.value)}
-          className="w-full p-2 border border-background-dark focus:outline-none  focus:ring-2 focus:ring-offset-background-danger  rounded bg-transparent"
+          className="w-full p-2 border text-black text-sm  border-background-dark focus:outline-none focus:ring-2 focus:ring-offset-background-danger rounded bg-transparent"
           rows="6"
           required
         />
       </div>
 
       <Button
-        type="submit"
-        text={`  Create  Post`}
-        className={`bg-background-gold text-black rounded-lg w-[200px] hover:bg-background-dark hover:text-white`}
+        text={loading ? "Creating Post..." : "Create Post"}
+        className={`px-6 py-2 rounded-md ${
+          loading
+            ? "bg-gray-400 w-[200px]"
+            : "bg-background-gold text-black hover:bg-background-dark hover:text-white md:col-span-2"
+        }`}
+        disabled={loading}
       />
     </form>
   );
