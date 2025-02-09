@@ -28,7 +28,7 @@ export default function Footer() {
 
   const support = [
     { name: "Contact Us", to: "/contact" },
-    { name: "Privacy  Policy", to: "#" },
+    { name: "Privacy  Policy", to: "/PrivacyPolicy.pdf" },
   ];
 
   const resources = [
@@ -61,7 +61,7 @@ export default function Footer() {
       title: "Support ",
       links: [
         { name: "Contact Us", to: "/contact" },
-        { name: "Privacy  Policy", to: "#" },
+        { name: "Privacy  Policy", to: "/PrivacyPolicy.pdf" },
       ],
     },
 
