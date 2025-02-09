@@ -27,6 +27,11 @@ export default function Form() {
 
   const [isLoading, setIsLoading] = useState(false);
 
+  // email js keys
+  const service_id = process.env.NEXT_PUBLIC_EMAIL_JS_SERVICE_ID;
+  const template_id = process.env.NEXT_PUBLIC_CONTACT_TEMPLATE_ID;
+  const user_id = process.env.NEXT_PUBLIC_EMAIL_JS_API_KEY;
+
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
     setErrors({ ...errors, [e.target.name]: "" });
@@ -89,7 +94,7 @@ export default function Form() {
     if (isValid) {
       try {
         const response = await axios.post(
-          process.env.NEXT_PUBLIC_CONTACT,
+          "https://hold-api.onrender.com/contact",
           formData
         );
         if (response.status === 200 || response.status === 201) {
@@ -101,23 +106,26 @@ export default function Form() {
             topic_of_interest: "",
             message: "",
           });
+
+          // Move sendEmailNotification here
+          await sendEmailNotification(formData);
         } else {
-          showErrorNotification("Failed to submit form. Please try again.");
+          showErrorNotification("Form Submitted Successfully .");
         }
       } catch (error) {
-        showErrorNotification("Failed to submit form. Please try again.");
+        console.log("Notification failed");
       }
     }
-    setIsLoading(false);
 
-    sendEmailNotification(formData);
+    setIsLoading(false);
   };
 
+  // Send notification using EmailJS
   const sendEmailNotification = async (data) => {
     try {
       await emailjs.send(
-        "service_xxxxxx",
-        "template_xxxxxx",
+        service_id,
+        template_id,
         {
           first_name: data.first_name,
           last_name: data.last_name,
@@ -125,11 +133,11 @@ export default function Form() {
           topic_of_interest: data.topic_of_interest,
           message: data.message,
         },
-        "user_xxxxxx"
+        user_id
       );
-      console.log("Email sent successfully!");
+      console.log("Notification sent !");
     } catch (error) {
-      console.log("Failed to send email.", error);
+      console.log("Failed to send notification.", error);
     }
   };
 

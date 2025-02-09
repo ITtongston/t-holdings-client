@@ -1,0 +1,11 @@
+User-agent: *
+Disallow: /admin
+Disallow: /dashboard
+Disallow: /private-page
+Disallow: /user-settings
+Disallow: /api/
+
+# Allow all other pages
+Allow: /
+
+Sitemap: https://tongston.com/sitemap.xml

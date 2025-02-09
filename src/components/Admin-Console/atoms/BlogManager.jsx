@@ -172,7 +172,7 @@ export const BlogManager = () => {
               <ReactQuill
                 value={newBlogData.content}
                 onChange={handleEditorChange}
-                className="w-full h-[200px] text-black text-sm bg-transparent border rounded"
+                className="w-full h-[400px] text-black   tracking-widest  leading-10 text-sm bg-transparent border rounded"
               />
             </div>
             <div>

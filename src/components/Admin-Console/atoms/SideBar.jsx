@@ -13,6 +13,7 @@ import UsersTabs from "../users-Route/UsersTabs";
 import { CreateBlog } from "./CreateBlog";
 import { faCreativeCommons } from "@fortawesome/free-brands-svg-icons";
 import { BlogManager } from "./BlogManager";
+import DashBoard from "./DashBoard";
 
 // Create your components for each menu item
 const Dashboard = () => <div className="text-red">Dashboard Content</div>;
@@ -27,13 +28,13 @@ export default function SideNavigation() {
   const renderContent = () => {
     switch (selectedItem) {
       case "Dashboard":
-        return <Dashboard />;
+        return <Analytics />;
       case "BlogPosts":
         return <CreateBlog />;
       case "ExportData":
         return <UsersTabs />;
       case "Analytics":
-        return <Analytics />;
+        return <DashBoard />;
       case "ManageBlogs":
         return <BlogManager />;
       default:
@@ -42,7 +43,7 @@ export default function SideNavigation() {
   };
 
   return (
-    <div className="h-screen flex">
+    <div className="h-screen flex bg-white">
       {/* Sidebar Container */}
       <div
         className={`h-full fixed inset-0  z-50 py-9  bg-slate-800  transition-all duration-300 ${
@@ -101,7 +102,7 @@ export default function SideNavigation() {
       </div>
 
       {/* Content Display Area */}
-      <div className="flex-1 p-3 ml-[8rem]   w-[50%]  md:w-[1100px] h-[fixed] overflow-y-auto ">
+      <div className="flex-1 p-3 ml-[8rem]   w-[50%]  md:w-[1100px] h-screen bg-white overflow-y-auto ">
         {/* Show content on desktop */}
         <div className="hidden lg:block">{renderContent()}</div>
 

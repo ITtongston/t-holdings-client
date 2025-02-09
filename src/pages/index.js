@@ -12,16 +12,34 @@ const index = () => {
           <title>Tongston Entrepreneurship Group</title>
           <meta
             name="description"
-            content=" We build Value, Influence  and Profitability  Through our Enterprise Solutions."
+            content="We build valuable, profitable, and influential people, governments, businesses & non-profits."
           />
-          <meta
-            property="og:title"
-            content="Tongston  Entrepreneurship Group"
-          />
+          {/* Open Graph Meta Tags */}
+          <meta property="og:title" content="Tongston Entrepreneurship Group" />
           <meta
             property="og:description"
-            content=" We build Value, Influence  and Profitability  Through our Enterprise Solutions."
+            content="We build valuable, profitable, and influential people, governments, businesses & non-profits."
           />
+          <meta property="og:image" content="/assets/images/logos/tlogo.png" />
+          <meta property="og:url" content="https://tongston.com" />
+          <meta property="og:type" content="website" />
+          <meta
+            property="og:site_name"
+            content="Tongston Entrepreneurship Group"
+          />
+          <meta property="og:locale" content="en_US" />
+
+          {/* Twitter Card Meta Tags */}
+          <meta
+            name="twitter:title"
+            content="Tongston Entrepreneurship Group"
+          />
+          <meta
+            name="twitter:description"
+            content="We build valuable, profitable, and influential people, governments, businesses & non-profits."
+          />
+          <meta name="twitter:image" content="/assets/images/logos/tlogo.png" />
+          <meta name="twitter:card" content="summary_large_image" />
         </Head>
       </>
       {/* render container with atoms  */}

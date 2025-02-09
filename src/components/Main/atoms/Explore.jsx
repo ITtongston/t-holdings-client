@@ -142,7 +142,7 @@ export default function Explore() {
           text={`Explore Now`}
           className={` border border-white bg-transparent text-white font-bold  rounded-md hover:bg-white  hover:text-black `}
           modalContent={
-            <span className="w-full max-h-screen p-2 pb-4  py-[4rem] grid grid-cols-2  md:grid-cols-3  justify-center items-start gap-x-5 gap-y-5">
+            <span className="w-full max-h-screen p-2 mb-[5rem]  py-[4rem] grid grid-cols-2  md:grid-cols-3  justify-center items-start gap-x-5 gap-y-5">
               {/* render the modal in here */}
               {card_data.map((card, index) => (
                 <Link

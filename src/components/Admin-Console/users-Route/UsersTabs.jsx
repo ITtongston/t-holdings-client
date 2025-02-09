@@ -1,13 +1,15 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
-import GetServiceRequest from "@/api/GetServiceRequest";
+import GetServiceRequest from "@/api/FetchServiceRequest";
 import SubscriberList from "@/api/FetchSubscribers";
+import FetchContacts from "@/api/FetchContacts";
 
 export default function UsersTabs() {
   // Define tabs with labels
   const tabs = [
     { id: 1, label: "Service Requests" },
     { id: 2, label: "Subscribers" },
+    { id: 3, label: "Contacts" },
   ];
 
   // State for the active tab
@@ -20,6 +22,8 @@ export default function UsersTabs() {
         return <GetServiceRequest />;
       case 2:
         return <SubscriberList />;
+      case 3:
+        return <FetchContacts />;
       default:
         return null;
     }
@@ -35,8 +39,8 @@ export default function UsersTabs() {
             onClick={() => setActiveTab(tab.id)}
             className={`px-4 py-2 text-sm  md:text-lg    font-bold  font-body max-w-[250px] md:max-w-[250px] h-[70px]  ${
               activeTab === tab.id
-                ? " text-black     transition-transform ease-in-out duration-1000 "
-                : "bg-background-light text-yellow "
+                ? " text-yellow     transition-transform ease-in-out duration-1000 "
+                : "bg-background-light text-black "
             } transition duration-300 ease-in-out`}
           >
             {tab.label}

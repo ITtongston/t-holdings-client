@@ -111,13 +111,13 @@ export default function Navbar() {
               )}
             </div>
           ))}{" "}
-          <Link href={`/admin`}>
+          {/* <Link href={`/admin`}>
             <Button
               text={`login`}
               icon={faUser}
               className={`bg-background-gold text-black hover:bg-background-dark hover:text-white  w-[90px] `}
             />
-          </Link>
+          </Link> */}
         </div>
 
         {/* Mobile Hamburger Menu */}
@@ -177,13 +177,13 @@ export default function Navbar() {
                     )}
                   </div>
                 ))}{" "}
-                <Link href={`/admin`} onClick={() => setMobileMenuOpen(false)}>
+                {/* <Link href={`/admin`} onClick={() => setMobileMenuOpen(false)}>
                   <Button
                     text={`login`}
                     icon={faUser}
                     className={`bg-background-gold text-black hover:bg-background-dark hover:text-white  w-[90px] `}
                   />
-                </Link>
+                </Link> */}
               </div>
             </div>
           )}
