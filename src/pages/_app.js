@@ -30,14 +30,16 @@ function MyApp({ Component, pageProps }) {
         />
         <link rel="canonical" href="https://tongston.com" />
         <meta name="monetag" content="7c5586488b3ace104bf40bb96411f245" />
+
+        {/* monetag monitization -add  */}
       </Head>
 
       <div>
         {/* <Navbar /> */}
         <Component {...pageProps} />
         {/* <Footer /> */}
-        {/* <Chatbot />
-        <Monetag /> */}
+        {/* <Chatbot /> */}
+        <Monetag />
         <BackToTop />
         <ToastContainer />
       </div>
