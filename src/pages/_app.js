@@ -29,9 +29,15 @@ function MyApp({ Component, pageProps }) {
           href="/assets/images/logos/world-logo.png"
         />
         <link rel="canonical" href="https://tongston.com" />
-        <meta name="monetag" content="7c5586488b3ace104bf40bb96411f245" />
 
         {/* monetag monitization -add  */}
+        <meta name="monetag" content="7c5586488b3ace104bf40bb96411f245" />
+        {/* monetag monitization -end */}
+        <script
+          src="https://pertawee.net/act/files/tag.min.js?z=8930402"
+          data-cfasync="false"
+          async
+        ></script>
       </Head>
 
       <div>
@@ -39,7 +45,7 @@ function MyApp({ Component, pageProps }) {
         <Component {...pageProps} />
         {/* <Footer /> */}
         {/* <Chatbot /> */}
-        <Monetag />
+        {/* <Monetag /> */}
         <BackToTop />
         <ToastContainer />
       </div>
