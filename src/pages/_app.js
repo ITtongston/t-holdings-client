@@ -45,7 +45,7 @@ function MyApp({ Component, pageProps }) {
         <Component {...pageProps} />
         {/* <Footer /> */}
         {/* <Chatbot /> */}
-        {/* <Monetag /> */}
+        <Monetag />
         <BackToTop />
         <ToastContainer />
       </div>
