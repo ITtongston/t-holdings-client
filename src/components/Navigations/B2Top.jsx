@@ -26,7 +26,7 @@ export const BackToTop = () => {
 
   return (
     <button
-      className={`fixed bottom-6 right-4 bg-background-danger  text-white p-3 rounded-full shadow-2xl  z-40 transition-all duration-300 
+      className={`fixed bottom-6 right-4 bg-background-danger  bg-opacity-80  text-white p-3 rounded-full shadow-2xl  z-40 transition-all duration-300 
       ${
         isVisible ? "opacity-100 scale-100" : "opacity-0 scale-0"
       } hover:bg-background-gold  hover:text-white `}
