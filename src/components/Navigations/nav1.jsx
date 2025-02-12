@@ -29,7 +29,7 @@ const navLinks = [
   { name: "T-WorldK12", href: "http://tworldk12.zohosites.com" },
   // { name: "Tees25", href: "https://tees25.tongston.com" },
   {
-    name: "Innovations",
+    name: "Media",
     href: "#",
     dropdown: [
       { name: "Events", href: "/events" },
@@ -65,7 +65,7 @@ export default function Navbar() {
             <div key={index} className="relative group">
               {link.dropdown ? (
                 <Menu as="div" className="relative">
-                  <Menu.Button className="text-black font-heading font-bold text-xs flex items-center space-x-2 cursor-pointer">
+                  <Menu.Button className="text-black font-body font-bold text-xs flex items-center space-x-2 cursor-pointer">
                     <span>{link.name}</span>
                     <FontAwesomeIcon icon={faChevronDown} className="ml-2" />
                   </Menu.Button>
@@ -78,7 +78,7 @@ export default function Navbar() {
                     leaveFrom="opacity-100 scale-100 rotate-0"
                     leaveTo="opacity-0 scale-90 rotate-180"
                   >
-                    <Menu.Items className="absolute left-0 right-0 top-8 bg-background-light text-black font-heading font-bold text-xs p-2 shadow-md gap-y-2 max-h-[400px]  justify-center items-start  flex flex-col w-52">
+                    <Menu.Items className="absolute left-0 right-0 top-8 bg-background-light text-black font-body font-bold text-xs p-2 shadow-md gap-y-2 max-h-[400px]  justify-center items-start  flex flex-col w-52">
                       {link.dropdown.map((dropdownItem, i) => (
                         <Menu.Item key={i}>
                           {({ active }) => (
@@ -104,7 +104,7 @@ export default function Navbar() {
                 </Menu>
               ) : (
                 <Link href={link.href}>
-                  <div className="text-black hover:text-red-700 text-xs font-heading font-bold">
+                  <div className="text-black hover:text-red-700 text-xs font-body font-bold">
                     {link.name}
                   </div>
                 </Link>

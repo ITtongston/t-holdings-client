@@ -107,7 +107,7 @@ export default function Footer() {
                 className="text-yellow  font-bold  text-xs"
               />
               <span
-                className={`text-white font-body transform duration-700 ease-in-out `}
+                className={`text-white text-opacity-60 hover:text-yellow hover:underline  font-body transform duration-700 ease-in-out `}
               >
                 {link.name}
               </span>
@@ -116,7 +116,7 @@ export default function Footer() {
         </section>
 
         <section className="company-section flex flex-col gap-y-5 justify-start items-start  w-full h-[fixed]">
-          <span className="font-heading text-white font-bold text-lg  md:text-xl">
+          <span className="font-heading text-white  font-bold text-lg  md:text-xl">
             Company
           </span>
           {company.map((link) => (
@@ -130,7 +130,7 @@ export default function Footer() {
                 className="text-yellow  font-bold  text-xs"
               />
               <span
-                className={`text-white font-body transform duration-700 ease-in-out `}
+                className={`text-white  text-opacity-60 hover:text-yellow hover:underline  font-body transform duration-700 ease-in-out `}
               >
                 {link.name}
               </span>
@@ -153,7 +153,7 @@ export default function Footer() {
                 className="text-yellow  font-bold  text-xs"
               />
               <span
-                className={`text-white font-body transform duration-700 ease-in-out `}
+                className={`text-white text-opacity-60 hover:text-yellow hover:underline   font-body transform duration-700 ease-in-out `}
               >
                 {link.name}
               </span>
@@ -177,7 +177,7 @@ export default function Footer() {
                 className="text-yellow  font-bold  text-xs"
               />
               <span
-                className={`text-white font-body transform duration-700 ease-in-out `}
+                className={`text-white text-opacity-60 hover:text-yellow hover:underline   font-body transform duration-700 ease-in-out `}
               >
                 {link.name}
               </span>
@@ -190,7 +190,7 @@ export default function Footer() {
           <Accordion3 accordions={footer_accordion} />
         </section>
         <section className="copyright-container w-full  ml-[0.5rem]  md:ml-0   md:mt-auto md:mb-5   order-3    md:order-none ">
-          <span className={` text-opacity-40`}>
+          <span className={` text-opacity-40 text-white `}>
             <span>
               &copy; Tongston {new Date().getFullYear()} All Rights Reserved
             </span>

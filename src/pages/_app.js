@@ -7,6 +7,9 @@ import "@fortawesome/fontawesome-svg-core/styles.css";
 
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { BackToTop } from "@/components/Navigations/B2Top";
+import Chatbot from "@/components/Integrations/Chatbot";
+import Monetag from "@/components/Integrations/Monetag";
 // import Navbar from "@/components/Navigations/nav1";
 // import Footer from "@/components/Navigations/Footer";
 
@@ -26,12 +29,16 @@ function MyApp({ Component, pageProps }) {
           href="/assets/images/logos/world-logo.png"
         />
         <link rel="canonical" href="https://tongston.com" />
+        <meta name="monetag" content="7c5586488b3ace104bf40bb96411f245" />
       </Head>
 
       <div>
         {/* <Navbar /> */}
         <Component {...pageProps} />
         {/* <Footer /> */}
+        {/* <Chatbot />
+        <Monetag /> */}
+        <BackToTop />
         <ToastContainer />
       </div>
     </>
