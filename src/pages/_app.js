@@ -41,11 +41,8 @@ function MyApp({ Component, pageProps }) {
       </Head>
 
       <div>
-        {/* <Navbar /> */}
         <Component {...pageProps} />
-        {/* <Footer /> */}
-        {/* <Chatbot /> */}
-        <Monetag />
+        <div>{/* <Monetag /> */}</div>
         <BackToTop />
         <ToastContainer />
       </div>
