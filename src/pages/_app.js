@@ -40,6 +40,15 @@ function MyApp({ Component, pageProps }) {
           async
         ></script>
 
+        {/* google concent manager tag */}
+        <script
+          id="Cookiebot"
+          src="https://consent.cookiebot.com/uc.js"
+          data-cbid="acb59c2d-4589-4469-8797-cb5029bc2464"
+          type="text/javascript"
+          async
+        ></script>
+
         {/* Start of HubSpot Embed Code */}
         {/* <script
           type="text/javascript"
