@@ -10,6 +10,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { BackToTop } from "@/components/Navigations/B2Top";
 import Chatbot from "@/components/Integrations/Chatbot";
 import Monetag from "@/components/Integrations/Monetag";
+import GoogleAnalytics from "@/components/Integrations/GoogleAnalytics";
 // import Navbar from "@/components/Navigations/nav1";
 // import Footer from "@/components/Navigations/Footer";
 
@@ -38,11 +39,29 @@ function MyApp({ Component, pageProps }) {
           data-cfasync="false"
           async
         ></script>
+
+        {/* Start of HubSpot Embed Code */}
+        {/* <script
+          type="text/javascript"
+          id="hs-script-loader"
+          async
+          defer
+          src="//js-na1.hs-scripts.com/49303343.js"
+        ></script> */}
+        {/* End of HubSpot Embed Code  */}
+
+        {/* Google Analytics Installation */}
       </Head>
 
       <div>
+        <GoogleAnalytics />
         <Component {...pageProps} />
-        <div>{/* <Monetag /> */}</div>
+        {/* <div> <Monetag /> </div> */}
+        {/* <Chatbot
+          position="bottom-left"
+          style={{ backgroundColor: "transparent", border: "1px solid black" }}
+        /> */}
+
         <BackToTop />
         <ToastContainer />
       </div>
