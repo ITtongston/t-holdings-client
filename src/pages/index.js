@@ -9,11 +9,19 @@ const index = () => {
     <div className="w-full h-[fixed]  bg-background-light ">
       <>
         <Head>
+          {/* meta image  */}
+
+          <link
+            rel="icon"
+            type="image/png"
+            href="/assets/images/logos/world-logo.png"
+          />
           <title>Tongston Entrepreneurship Group</title>
           <meta
             name="description"
             content="We build valuable, profitable, and influential people, governments, businesses & non-profits."
           />
+
           {/* Open Graph Meta Tags */}
           <meta property="og:title" content="Tongston Entrepreneurship Group" />
           <meta
