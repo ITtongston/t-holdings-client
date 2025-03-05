@@ -39,6 +39,7 @@ const index = () => {
       {/* render container with atoms  */}
       <Navbar />
       <CareersCon />
+
       <Footer />
     </div>
   );

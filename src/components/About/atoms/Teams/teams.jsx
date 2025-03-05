@@ -118,7 +118,8 @@ const teamData = [
   {
     name: "Afolabi Omotoyosi",
     bio: <span>Data & Research Officer, </span>,
-    profileurl: "#",
+    profileurl:
+      "https://www.linkedin.com/in/omotoyosi-afolabi-b120792b9?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
     avatar: "/assets/images/teams/afolabi.jpg",
     bio_description: (
       <span>
