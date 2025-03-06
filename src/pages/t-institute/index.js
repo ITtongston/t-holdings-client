@@ -5,7 +5,7 @@ import React from "react";
 
 const index = () => {
   return (
-    <div className="w-full h-[fixed]  bg-background-light ">
+    <div className="w-full h-[fixed]  bg-background-light fade ">
       {/* render container with atoms  */}
       <Navbar />
       <InstCon />

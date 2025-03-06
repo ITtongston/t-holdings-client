@@ -5,7 +5,7 @@ import Navbar from "@/components/Navigations/nav1";
 
 const index = () => {
   return (
-    <div className="w-full h-[fixed]  bg-background-light ">
+    <div className="w-full h-[fixed]  bg-background-light  fade">
       {/* render container with atoms  */}
       <Navbar />
       <CollCon />

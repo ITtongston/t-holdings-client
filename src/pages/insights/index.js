@@ -6,7 +6,7 @@ import Head from "next/head";
 
 const index = () => {
   return (
-    <div className="w-full h-[fixed]  bg-background-light ">
+    <div className="w-full h-[fixed]  bg-background-light  fade">
       <>
         <Head>
           <title>Insights</title>

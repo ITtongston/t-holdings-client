@@ -22,6 +22,7 @@ export default {
         },
       },
       fontFamily: {
+        school: ["schoolbook", "sans-serif"],
         body: ["inter", "sans-serif"], // Using inter font for body text
         heading: ["lato", "sans-serif"], // Using lato font for heading text and sub heading
       },

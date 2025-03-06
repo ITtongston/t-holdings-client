@@ -45,7 +45,7 @@ const Index = () => {
   // Prevent rendering on mobile devices
   if (isMobile) {
     return (
-      <div className="w-full h-screen flex items-center justify-center bg-gray-100">
+      <div className="w-full h-screen flex items-center justify-center bg-gray-100  fade">
         <h2 className="text-xl font-bold text-gray-700 text-center">
           Please Switch to a Desktop Device to View this Page !
         </h2>

@@ -6,7 +6,7 @@ import Footer from "@/components/Navigations/Footer";
 
 const index = () => {
   return (
-    <div className="w-full h-[fixed]  bg-background-light ">
+    <div className="w-full h-[fixed]  bg-background-light fade ">
       <>
         <Head>
           {/* meta image  */}
